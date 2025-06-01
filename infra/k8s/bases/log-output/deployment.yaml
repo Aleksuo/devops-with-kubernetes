@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: exapp1
+  name: log-output
   namespace: default
   labels:
-    app: exapp1
+    app: log-output
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: exapp1
+      app: log-output
   template:
     metadata:
       labels:
-        app: exapp1
+        app: log-output
     spec:
       containers:
-      - name: exapp1
-        image: dev-registry.localhost:5000/ex1-app
+      - name: log-output
+        image: dev-registry.localhost/log-output

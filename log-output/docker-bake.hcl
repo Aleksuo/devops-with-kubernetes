@@ -3,10 +3,10 @@ variable "TAG" {
 }
 
 group "default" {
-    targets = ["app"]
+    targets = ["log-output"]
 }
-target "app" {
+target "log-output" {
     dockerfile = "Dockerfile"
     context = "."
-    tags = ["dev-registry.localhost:5000/ex1-app:${TAG}"]
+    tags = ["dev-registry.localhost:5000/log-output:${TAG}"]
 }
