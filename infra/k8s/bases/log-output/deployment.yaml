@@ -15,6 +15,17 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: shared
+          emptyDir: {}
       containers:
-      - name: log-output
-        image: dev-registry.localhost:5000/log-output
+      - name: log-output-server
+        image: dev-registry.localhost:5000/log-output-server
+        volumeMounts:
+          - name: shared
+            mountPath: /usr/src/app/files
+      - name: log-output-generator
+        image: dev-registry.localhost:5000/log-output-generator
+        volumeMounts:
+          - name: shared
+            mountPath: /usr/src/app/files
