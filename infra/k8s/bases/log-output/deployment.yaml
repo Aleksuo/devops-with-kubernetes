@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
       - name: log-output
-        image: dev-registry.localhost/log-output
+        image: dev-registry.localhost:5000/log-output

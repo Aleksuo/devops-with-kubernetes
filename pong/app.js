@@ -4,7 +4,8 @@ const port = 3000
 let reqCount = 0;
 
 app.get('/pingpong', (req, res) => {
-    res.send(count);
+    res.send(reqCount);
+    reqCount += 1;
 })
 
 app.listen(port, () => {

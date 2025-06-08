@@ -13,4 +13,4 @@ spec:
     spec:
       containers:
       - name: pong
-        image: dev-registry.localhost/pong
+        image: dev-registry.localhost:5000/pong
