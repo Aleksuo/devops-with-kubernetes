@@ -11,6 +11,13 @@ spec:
       labels:
         app: pong
     spec:
+      volumes:
+        - name: shared
+          persistentVolumeClaim:
+            claimName: text-pvc
       containers:
       - name: pong
         image: dev-registry.localhost:5000/pong
+        volumeMounts:
+          - name: shared
+            mountPath: /usr/src/app/files

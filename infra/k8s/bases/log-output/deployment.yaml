@@ -17,7 +17,8 @@ spec:
     spec:
       volumes:
         - name: shared
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: text-pvc
       containers:
       - name: log-output-server
         image: dev-registry.localhost:5000/log-output-server
