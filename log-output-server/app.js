@@ -1,5 +1,4 @@
 const express = require("express");
-const { time } = require("node:console");
 const fs = require("node:fs");
 const app = express();
 const port = 3000;
