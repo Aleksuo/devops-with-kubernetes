@@ -5,3 +5,4 @@ resources:
   - pong
   - ingress
   - pv
+  - namespace
