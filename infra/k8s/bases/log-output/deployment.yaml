@@ -26,6 +26,9 @@ spec:
           - name: shared
             mountPath: /usr/src/app/files
       - name: log-output-generator
+        envFrom:
+          - configMapRef:
+              name: log-output-generator-config
         image: dev-registry.localhost:5000/log-output-generator
         volumeMounts:
           - name: shared
