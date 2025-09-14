@@ -31,12 +31,19 @@
   # services.postgres.enable = true;
 
   # https://devenv.sh/scripts/
-  scripts.hello.exec = ''
-    echo hello from $GREET
+  scripts.cluster-recreate.exec=''
+    k3d cluster delete -c cluster-config.yaml
+    k3d cluster create -c cluster-config.yaml
+  '';
+  scripts.up.exec = ''
+    docker bake --push
+    kubectl apply -k ./infra/k8s/bases
+  '';
+  scripts.down.exec = ''
+    kubectl delete namespace exercises
   '';
 
   enterShell = ''
-    hello
     git --version
   '';
 
