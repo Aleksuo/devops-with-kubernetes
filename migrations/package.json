@@ -1,16 +1,17 @@
 {
-  "name": "pong",
+  "name": "migrations",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./app.js"
+    "migrate": "node-pg-migrate"
   },
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module",
   "dependencies": {
-    "express": "^5.1.0",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "node-pg-migrate": "^8.0.3"
   }
 }

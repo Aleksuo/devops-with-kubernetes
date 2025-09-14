@@ -3,7 +3,7 @@ variable "TAG" {
 }
 
 group "default" {
-    targets = ["pong", "log-output-server", "log-output-generator"]
+    targets = ["pong", "log-output-server", "log-output-generator", "migrations"]
 }
 target "pong" {
     dockerfile = "Dockerfile"
@@ -21,4 +21,10 @@ target "log-output-generator" {
     dockerfile = "Dockerfile"
     context = "log-output-generator"
     tags = ["dev-registry.localhost:5000/log-output-generator:${TAG}"]
+}
+
+target "migrations" {
+    dockerfile = "Dockerfile"
+    context = "migrations"
+    tags = ["dev-registry.localhost:5000/migrations:${TAG}"]
 }

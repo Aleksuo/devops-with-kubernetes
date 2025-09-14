@@ -1,6 +1,6 @@
-const fs = require('node:fs')
-const express = require('express')
-
+import {pool} from "./db.js"
+import * as fs from "node:fs"
+import express from "express"
 
 const saveToFile = (str) => {
   fs.writeFile('/usr/src/app/files/pong.txt', str, err => {
@@ -20,11 +20,13 @@ saveToFile(output);
 
 
 
-app.get('/pingpong', (req, res) => {
-    res.send(reqCount);
-    reqCount += 1;
-    const output = `Pings / Pongs: ${reqCount}`
-    saveToFile(output)
+app.get('/pingpong', async (req, res) => {
+    const result = await pool.query("SELECT nextval('app_count') - 1 AS value");
+    const value = result.rows[0].value;
+    res.send(value);
+   // reqCount += 1;
+  //const output = `Pings / Pongs: ${reqCount}`
+  //saveToFile(output)
     
 })
 

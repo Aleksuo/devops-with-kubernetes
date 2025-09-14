@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate-job
+  namespace: exercises
+spec:
+  backoffLimit: 5
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: migrate
+        env:
+          - name: DATABASE_URL
+            value: 'postgres://pongdbuser:pongdbuserpw@db-svc:5432/pongdb'
+        image: dev-registry.localhost:5000/migrations
+        command: ["npm", "run", "migrate", "up", "--silent"]
+      restartPolicy: Never

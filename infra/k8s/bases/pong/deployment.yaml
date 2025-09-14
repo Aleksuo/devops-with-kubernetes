@@ -19,6 +19,17 @@ spec:
       containers:
       - name: pong
         image: dev-registry.localhost:5000/pong
+        env:
+          - name: PGUSER
+            value: pongdbuser
+          - name: PGPASSWORD
+            value: pongdbuserpw
+          - name: PGHOST
+            value: db-svc
+          - name: PGPORT
+            value: '5432'
+          - name: PGDATABASE
+            value: pongdb
         volumeMounts:
           - name: shared
             mountPath: /usr/src/app/files
