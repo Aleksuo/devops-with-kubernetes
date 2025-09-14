@@ -1,0 +1,12 @@
+# TODO: Move to secrets if this app needs to be deployed
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: exercises
+  name: db-config-map
+  labels:
+    app: db
+data:
+  POSTGRES_DB: pongdb
+  POSTGRES_USER:  pongdbuser
+  POSTGRES_PASSWORD: pongdbuserpw
