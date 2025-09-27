@@ -27,7 +27,7 @@ spec:
                 path: information.txt
       containers:
       - name: log-output-server
-        image: dev-registry.localhost:5000/log-output-server
+        image: log-output-server-image
         env:
           - name: MESSAGE
             valueFrom:
@@ -44,7 +44,7 @@ spec:
         envFrom:
           - configMapRef:
               name: log-output-generator-config
-        image: dev-registry.localhost:5000/log-output-generator
+        image: log-output-generator-image
         volumeMounts:
           - name: shared
             mountPath: /usr/src/app/files

@@ -18,7 +18,7 @@ spec:
             claimName: text-pvc
       containers:
       - name: pong
-        image: dev-registry.localhost:5000/pong
+        image: pong-image
         env:
           - name: PGUSER
             value: pongdbuser

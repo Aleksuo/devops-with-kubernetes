@@ -13,6 +13,6 @@ spec:
         env:
           - name: DATABASE_URL
             value: 'postgres://pongdbuser:pongdbuserpw@db-svc:5432/pongdb'
-        image: dev-registry.localhost:5000/migrations
+        image: exercises-db-migration-image
         command: ["npm", "run", "migrate", "up", "--silent"]
       restartPolicy: Never

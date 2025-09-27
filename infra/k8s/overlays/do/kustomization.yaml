@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+  - name: log-output-server-image
+    newName: dev-registry.localhost:5000/log-output-server
+    newTag: latest
+  - name: log-output-generator-image
+    newName: dev-registry.localhost:5000/log-output-generator
+    newTag: latest
+  - name: exercises-db-migration-image
+    newName: dev-registry.localhost:5000/migrations
+    newTag: latest
+  - name: pong-image
+    newName: dev-registry.localhost:5000/pong
+    newTag: latest
+resources:
+  - ../../bases
