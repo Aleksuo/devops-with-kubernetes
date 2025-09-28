@@ -2,16 +2,25 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
   - name: log-output-server-image
-    newName: dev-registry.localhost:5000/log-output-server
+    newName: registry.digitalocean.com/exercises/log-output-server
     newTag: latest
   - name: log-output-generator-image
-    newName: dev-registry.localhost:5000/log-output-generator
+    newName: registry.digitalocean.com/exercises/log-output-generator
     newTag: latest
   - name: exercises-db-migration-image
-    newName: dev-registry.localhost:5000/migrations
+    newName: registry.digitalocean.com/exercises/migrations
     newTag: latest
   - name: pong-image
-    newName: dev-registry.localhost:5000/pong
+    newName: registry.digitalocean.com/exercises/pong
     newTag: latest
+patchesStrategicMerge:
+  - patch-ingress-controller-class.yaml
+helmCharts:
+  - name: ingress-nginx
+    namespace: exercises
+    repo: https://kubernetes.github.io/ingress-nginx
+    releaseName: ingress-nginx
+    includeCRDs: true
+    skipTests: true
 resources:
   - ../../bases
