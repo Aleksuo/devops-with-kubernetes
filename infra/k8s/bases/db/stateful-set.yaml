@@ -25,6 +25,7 @@ spec:
         volumeMounts:
           - name: db-data-storage
             mountPath: /var/lib/postgresql/data
+            subPath: pgdata
   volumeClaimTemplates:
   - metadata:
       name: db-data-storage
