@@ -11,6 +11,7 @@
     pkgs.kubectl
     pkgs.k9s
     pkgs.kubectx
+    pkgs.kubernetes-helm
   ];
 
   languages.javascript = {
@@ -37,10 +38,15 @@
   '';
   scripts.up.exec = ''
     docker bake --push
-    kubectl apply -k ./infra/k8s/bases
+    kubectl apply -k ./infra/k8s/overlays/dev
   '';
   scripts.down.exec = ''
     kubectl delete namespace exercises
+  '';
+
+  scripts.up-do.exec = ''
+    docker bake -f docker-bake.do.hcl --push
+    kubectl kustomize ./infra/k8s/overlays/do --enable-helm | kubectl apply -f -
   '';
 
   enterShell = ''
