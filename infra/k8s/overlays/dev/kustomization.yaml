@@ -15,4 +15,5 @@ images:
     newTag: latest
 resources:
   - ../../bases
+  - ingress
   - text-pv.yaml

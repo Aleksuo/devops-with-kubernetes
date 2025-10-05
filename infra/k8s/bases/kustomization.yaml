@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - log-output
   - pong
-  - ingress
   - pv
   - namespace
   - db

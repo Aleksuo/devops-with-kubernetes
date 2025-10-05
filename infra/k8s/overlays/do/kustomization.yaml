@@ -13,14 +13,6 @@ images:
   - name: pong-image
     newName: registry.digitalocean.com/exercises/pong
     newTag: latest
-patchesStrategicMerge:
-  - patch-ingress-controller-class.yaml
-helmCharts:
-  - name: ingress-nginx
-    namespace: exercises
-    repo: https://kubernetes.github.io/ingress-nginx
-    releaseName: ingress-nginx
-    includeCRDs: true
-    skipTests: true
 resources:
   - ../../bases
+  - gateway
